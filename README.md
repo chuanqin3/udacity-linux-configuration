@@ -132,4 +132,4 @@ sys.path.insert(0, "/var/www/catalog/")
 from catalog import app as application
 application.secret_key = 'supersecretkey'`
 
-6. Rename the application.py to __init__.py
+6. Rename the `application.py` to `__init__.py`
