@@ -89,3 +89,9 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 - `$ sudo ufw allow 80/tcp`
 - `$ sudo ufw allow 123/udp`
 - `$ sudo ufw enable`
+
+======
+Congratulation! You have gone that far! The following deployment part is a headache and is never easy to do. Take a break and come back when you are ready.
+======
+
+## Deploy Catalog Application
