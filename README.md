@@ -2,6 +2,11 @@
 
 This is a 'for dummies' guide to those (including myself) are struggling with Udacity FSND's Linux Server Configuration project. Udacity provides a very poor instruction and leaves its student hopeless. Fortunately, some Udacity alumni provided some good step-by-step guide on how to set up their Amazon Lightsail website. However, their guides are partly outdated or incomplete. Here I am trying to provide a guide on how I completed this project.
 
+## TL:DR
+
+Host Name: ec2-13-58-109-116.us-east-2.compute.amazonaws.com
+IP Address: 13.58.109.116
+
 ## Amazon Lightsail Server Set Up
 
 1. Somehow you have to use the link provided by Udacity to Amazon Lightsail: https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Flightsail.aws.amazon.com%2Fls%2Fwebapp%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fparksidewebapp&forceMobileApp=0
