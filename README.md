@@ -104,11 +104,32 @@ IP Address: 13.58.109.116
 
 ## Deploy Catalog Application
 
-We will use a virtual machine, apache2, and postgre to host our application.
+We will use a virtual machine, apache2, and postgre to host our application. Before we any thing, ssh to the Amazon Terminal through your Terminal with grader.
 
 1. Install required packages
 - `$ sudo apt-get install apache2`
 - `$ sudo apt-get install libapache2-mod-wsgi python-dev`
+- `$ sudo apt-get install git`
 
 2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2 start` or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution:
 ![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic10.png)
+
+3. Set up the folder structure (although clumsy, but works)
+- `$ cd /var/www`
+- `$ sudo mkdir catalog`
+- `$ sudo chown -R grader:grader catalog`
+- `$ cd catalog`
+
+4. Now we clone the project from Github: `$ git clone [your link]` Copy your link from here is the easiet way:
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic11.png)
+
+5. Create a .wsgi file: `$sudo nano catalog.wsgi` and add the following into this file
+`import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0, "/var/www/catalog/")
+
+from catalog import app as application
+application.secret_key = 'supersecretkey'`
+
+6. Rename the application.py to __init__.py
