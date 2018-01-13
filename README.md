@@ -120,7 +120,7 @@ We will use a virtual machine, apache2, and postgre to host our application. Bef
 - `$ sudo chown -R grader:grader catalog`
 - `$ cd catalog`
 
-4. Now we clone the project from Github: `$ git clone [your link]` Copy your link from here is the easiet way:
+4. Now we clone the project from Github: `$ git clone [your link] catalog` Copy your link from here is the easiet way:
 ![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic11.png)
 
 5. Create a .wsgi file: `$sudo nano catalog.wsgi` and add the following into this file
