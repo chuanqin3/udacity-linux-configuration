@@ -8,4 +8,14 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 
 2. Create a new AWS account and then go back to use the link above to log in
 
-3. ![my image](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic1.png)
+3. After you log in, click 'Create Instance'
+![create instance](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic1.png)
+
+4. Select Platform and  blueprint
+![choose platform and blueprint](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic2.png)
+
+5. Scroll down to name your instance and click 'Create'
+![final step](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic3.png)
+
+6. The instance needs 5~10 mins to set up. After it is set up, you will see 'running' in the left corner of the status card. Write down the public IP address on a paper as you will use it a lot in the following steps
+![status card](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic4.png)
