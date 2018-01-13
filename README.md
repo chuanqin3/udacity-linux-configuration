@@ -19,3 +19,12 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 
 6. The instance needs 5~10 mins to set up. After it is set up, you will see 'running' in the left corner of the status card. Write down the public IP address on a paper as you will use it a lot in the following steps
 ![status card](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic4.png)
+
+7. 
+
+## Server Configuration
+
+1. We need to show the hidden files in Finder. At first, open your Mac OSX terminal and input `killall Finder`
+
+2. In the terminal, input `defaults write com.apple.finder AppleShowAllFiles TRUE`
+
