@@ -103,3 +103,12 @@ IP Address: 13.58.109.116
 ------
 
 ## Deploy Catalog Application
+
+We will use a virtual machine, apache2, and postgre to host our application.
+
+1. Install required packages
+- `$ sudo apt-get install apache2`
+- `$ sudo apt-get install libapache2-mod-wsgi python-dev`
+
+2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2 start` or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution:
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic10.png)
