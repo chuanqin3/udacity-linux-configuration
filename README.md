@@ -121,7 +121,7 @@ We will use a virtual machine, apache2, and postgre to host our application. Bef
 - `$ cd catalog`
 
 4. Now we clone the project from Github: `$ git clone [your link] catalog` Copy your link from here is the easiet way:
-![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic11.png)
+![github git link](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic11.png)
 
 5. Create a .wsgi file: `$sudo nano catalog.wsgi` and add the following into this file
 ```
@@ -143,7 +143,7 @@ application.secret_key = 'supersecretkey'
 - `$ sudo chmod -R 777 venv`
 
 You should see a `(venv)` appears before your username in the command line:
-![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic12.png)
+![venv](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic12.png)
 
 8. Now we need to install the Flask and other packages needed for this application
 - `$ sudo apt-get install python-pip`
@@ -151,9 +151,9 @@ You should see a `(venv)` appears before your username in the command line:
 - `$ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlaclemy_utils requests render_template, redirect, psslib [anything else you have built within this application`
 
 9. Use the `nano __init__.py` command to change the `client_secrets.json` line to `/var/www/catalog/catalog/client_secrets.json` 
-![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic13.png)
+![change path](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic13.png)
 and change the host to your Amazon Lightsail public IP address and port to 80
-![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic14.png)
+![change host and port](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic14.png)
 
 10. Now we need to configure and enable the virtual host
 - `$ sudo nano /etc/apache2/sites-available/catalog.conf`
@@ -188,4 +188,17 @@ You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
 - `$ sudo su - postgres -i`
 
 You should see the username changed again in command line, and type `$ psql` to get into postgres command line
-![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic15.png)
+![postgrel command line](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic15.png)
+
+12. Now we create a user to create and set up the database. I name my database `catalog` with user `catalog`
+- `$ CREATE USER catalog WITH PASSWORD [your password];`
+- `$ ALTER USER catalog CREATEDB;`
+- `$ CREATE DATABASE catalog WITH OWNER catalog;`
+- Connect to database `$ \c catalog`
+- `$ REVOKE ALL ON SCHEMA public FROM public;`
+- `$ GRANT ALL ON SCHEMA public TO catalog;`
+- Quit the postgrel command line: `$ \c` and then `$ exit`
+
+13. use `sudo nano` command to change all engine to `engine = create_engine('postgresql://catalog:[your password]@localhost/catalog`
+![engine chan ge](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic16.png)
+
