@@ -200,5 +200,17 @@ You should see the username changed again in command line, and type `$ psql` to 
 - Quit the postgrel command line: `$ \c` and then `$ exit`
 
 13. use `sudo nano` command to change all engine to `engine = create_engine('postgresql://catalog:[your password]@localhost/catalog`
-![engine chan ge](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic16.png)
+![engine change](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic16.png)
+
+14. Initiate the database if you have a script to do so:
+![initiate database](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic17.png)
+
+15. Restart Apache server `$ sudo service apache2 restart` and enter your public IP address or host name into the browser. Hooray! Your application should be online now!
+
+## Reference
+I deeply thank to those alumni who posted their step-by-step on their Github:
+- https://github.com/rrjoson/udacity-linux-server-configuration/blob/master/README.md
+- https://github.com/stueken/FSND-P5_Linux-Server-Configuration
+- https://github.com/iliketomatoes/linux_server_configuration
+
 
