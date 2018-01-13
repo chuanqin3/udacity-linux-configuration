@@ -92,7 +92,7 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 
 ------
 
-Congratulation! You have gone that far! The following deployment part is a headache and is never easy to do. Take a break and come back when you are ready.
+**Congratulation! You have gone that far! The following deployment part is a headache and is never easy to do. Take a break and come back when you are ready.**
 
 ------
 
