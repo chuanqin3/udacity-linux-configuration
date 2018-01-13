@@ -155,4 +155,37 @@ You should see a `(venv)` appears before your username in the command line:
 and change the host to your Amazon Lightsail public IP address and port to 80
 ![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic14.png)
 
-10. Use 
+10. Now we need to configure and enable the virtual host
+- `$ sudo nano /etc/apache2/sites-available/catalog.conf`
+- Paste the following code and save
+```
+<VirtualHost *:80>
+    ServerName [YOUR PUBLIC IP ADDRESS]
+    ServerAlias [YOUR AMAZON LIGHTSAIL HOST NAME]
+    ServerAdmin admin@35.167.27.204
+    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+    WSGIProcessGroup catalog
+    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    <Directory /var/www/catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/catalog/catalog/static
+    <Directory /var/www/catalog/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
+
+11. Now we need to set up the database
+- `$ sudo apt-get install libpq-dev python-dev`
+- `$ sudo apt-get install postgresql postgresql-contrib`
+- `$ sudo su - postgres -i`
+
+You should see the username changed again in command line, and type `$ psql` to get into postgres command line
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic15.png)
