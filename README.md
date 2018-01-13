@@ -5,6 +5,7 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 ## TL:DR
 
 Host Name: ec2-13-58-109-116.us-east-2.compute.amazonaws.com
+
 IP Address: 13.58.109.116
 
 ## Amazon Lightsail Server Set Up
