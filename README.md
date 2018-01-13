@@ -31,22 +31,61 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 
 ## Server Configuration
 
-1. We need to show the hidden files in Finder. At first, open your Mac OSX terminal and input `killall Finder`
+1. We need to show the hidden files in Finder. At first, open your Mac OSX terminal and input `$ killall Finder`
 
-2. In the terminal, input `defaults write com.apple.finder AppleShowAllFiles TRUE`. Now you can see the hidden .ssh folder in Finder now
+2. In the terminal, input `$ defaults write com.apple.finder AppleShowAllFiles TRUE`. Now you can see the hidden .ssh folder in Finder now
 
 3. Move your downloaded `.pem` public key file into .ssh folder that is at the root of Finder
 ![move private key](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic7.png)
 
-4. We need to make our public key usable and secure. Going back to your terminal, input  `chmod 600 ~/.ssh/YourAWSKey.pem`
+4. We need to make our public key usable and secure. Going back to your terminal, input  `$ chmod 600 ~/.ssh/YourAWSKey.pem`
 
-5. We now use this key to log into our Amazon Lightsail Server: `ssh -i ~/.ssh/YourAWSKey.pem ubuntu@13.58.109.116`
+5. We now use this key to log into our Amazon Lightsail Server: `$ ssh -i ~/.ssh/YourAWSKey.pem ubuntu@13.58.109.116`
 
-6. Amazon Lightsail does not allow you to log in as a root user, but we can switch to become a root user! type `sudo su -` and boom, we become a root user! Then type  `sudo adduser grader` to create another user 'grader'
+6. Amazon Lightsail does not allow you to log in as a root user, but we can switch to become a root user. Type `$ sudo su -` and boom, we become a root user! Then type  `$ sudo adduser grader` to create another user 'grader'
 ![root user](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic9.png)
 
 7. Now create a new file under the sudoers directory: `$ sudo nano /etc/sudoers.d/grader`. Fill that file with `grader ALL=(ALL:ALL) ALL`, then save it (control X, then type `yes`, then hit the return key on your keyboard)
 
-8. In order to prevent the `sudo: unable to resolve host` error, edit the hosts by `$ sudo nano /etc/hosts`, and then add `127.0.1.1 ip-10-20-37-65` under `127.0.1.1:localhost`
+8. In order to prevent the `$ sudo: unable to resolve host` error, edit the hosts by `$ sudo nano /etc/hosts`, and then add `127.0.1.1 ip-10-20-37-65` under `127.0.1.1:localhost`
 
+9. Run the following commands to update all packages and install finger package:
+- `$ sudo apt-get update`
+- `$ sudo apt-get upgrade`
+- `$ sudo apt-get install finger`
 
+10. Open a new Terminal window (Command+N) and input `$ ssh-keygen -f ~/.ssh/udacity_key.rsa`
+
+11. Stay on the same Terminal window, input `$ cat ~/.ssh/udacity_key.rsa.pub` to read the public key. Copy the public key.
+
+12. Going back to the first terminal window where you are logged into Amazon Lightsail as the root user, move to grader's folder by `$ cd /home/grader`
+
+13. Create a .ssh directory: `$ mkdir .ssh`
+
+14. Create a file to store the public key: `$ touch .ssh/authorized_keys`
+
+15. Edit the authorized_keys file `$ nano .ssh/authorized_keys`
+
+16. Change the permission: `$ sudo chmod 700 /home/grader/.ssh` and `$ sudo chmod 644 /home/grader/.ssh/authorized_keys`
+
+17. Change the owner from root to grader: `$ sudo chown -R grader:grader /home/grader/.ssh`
+
+18. Restart the ssh service: `$ sudo service ssh restart`
+
+19. Type `$ ~.` to disconnect from Amazon Lightsail server
+
+20. Log into the server as grader: `$ ssh -i ~/.ssh/udacity_key.rsa grader@13.58.109.116`
+
+21. We now need to enforce the key-based authentication: `$ sudo nano /etc/ssh/sshd_config`. Find the *PasswordAuthentication* line and change text after to `no`. After this, restart ssh again: `$ sudo service ssh restart`
+
+22. We now need to change the ssh port from 22 to 2200, as required by Udacity: `$ sudo nano /etc/ssh/ssdh_config` Find the *Port* line and change `22` to `2200`. Restart ssh: `$ sudo service ssh restart`
+
+23. Disconnect the server by `$ ~.` and then log back through port 2200: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@13.58.109.116`
+
+24. Disable ssh login for *root* user, as required by Udacity: `$ sudo nano /etc/ssh/sshd_config`. Find the *PermitRootLogin* line and edit to `no`. Restart ssh `$ sudo service ssh restart`
+
+25. Now we need to configure UFW to fulfill the requirement:
+- `$ sudo ufw allow 2200/tcp`
+- `$ sudo ufw allow 80/tcp`
+- `$ sudo ufw allow 123/udp`
+- `$ sudo ufw enable`
