@@ -135,3 +135,24 @@ application.secret_key = 'supersecretkey'
 ```
 
 6. Rename the `application.py` to `__init__.py`
+
+7. Now we need to install and start the virtual machine
+- `$ sudo pip install virtualenv`
+- `$ sudo virtualenv venv`
+- `$ source venv/bin/activate`
+- `$ sudo chmod -R 777 venv`
+
+You should see a `(venv)` appears before your username in the command line:
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic12.png)
+
+8. Now we need to install the Flask and other packages needed for this application
+- `$ sudo apt-get install python-pip`
+- `$ sudo pip install Flask`
+- `$ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlaclemy_utils requests render_template, redirect, psslib [anything else you have built within this application`
+
+9. Use the `nano __init__.py` command to change the `client_secrets.json` line to `/var/www/catalog/catalog/client_secrets.json` 
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic13.png)
+and change the host to your Amazon Lightsail public IP address and port to 80
+![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic14.png)
+
+10. Use 
