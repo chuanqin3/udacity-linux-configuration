@@ -20,11 +20,20 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 6. The instance needs 5~10 mins to set up. After it is set up, you will see 'running' in the left corner of the status card. Write down the public IP address on a paper as you will use it a lot in the following steps
 ![status card](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic4.png)
 
-7. 
+7. Click the status card and you will get into this page. Click the `Account page` at the bottom
+![account page](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic5.png)
+
+8. Click the 'Download' to download your private key, it should go to your Download folder by default. It is a .pem file, not the rsa file in other step-by-step guides, but we can still use it to log into our server
+![private key](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic6.png)
+
 
 ## Server Configuration
 
 1. We need to show the hidden files in Finder. At first, open your Mac OSX terminal and input `killall Finder`
 
-2. In the terminal, input `defaults write com.apple.finder AppleShowAllFiles TRUE`
+2. In the terminal, input `defaults write com.apple.finder AppleShowAllFiles TRUE`. Now you can see the hidden .ssh folder in Finder now
 
+3. Move your downloaded `.pem` public key file into .ssh folder that is at the root of Finder
+![move private key](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic7.png)
+
+4. 
