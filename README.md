@@ -124,12 +124,14 @@ We will use a virtual machine, apache2, and postgre to host our application. Bef
 ![it works!](https://github.com/callforsky/udacity-linux-configuration/blob/master/pic/pic11.png)
 
 5. Create a .wsgi file: `$sudo nano catalog.wsgi` and add the following into this file
-`import sys
+```
+import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0, "/var/www/catalog/")
 
 from catalog import app as application
-application.secret_key = 'supersecretkey'`
+application.secret_key = 'supersecretkey'
+```
 
 6. Rename the `application.py` to `__init__.py`
