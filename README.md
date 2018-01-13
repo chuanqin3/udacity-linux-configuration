@@ -8,4 +8,4 @@ This is a 'for dummies' guide to those (including myself) are struggling with Ud
 
 2. Create a new AWS account and then go back to use the link above to log in
 
-3. 
+3. ![my image](https://)
